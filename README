@@ -1,0 +1,76 @@
+*** Raspberry Pi-based External FMC CDU for XPlane ***
+
+This is the software to accompany my 737 FMC CDU project. Details of the project can be found
+on my blog here: http://blog.shahada.abubakar.net/tag/737fmccdu.
+
+- 3D Printed faceplate model can be found here: https://www.thingiverse.com/thing:774564
+- PCB Circuit board Schematic and Layout files can be found here: https://easyeda.com/dotsha747/737FMCCDU_V2-83f14eb14ced4e928df00539a30b3de3 (You may also order PCBs Online).
+
+==================A word from the "modder"============================================
+ This package is a modification of the original version by Shahada for use with
+ a Rockwell Collins MCDU-901. I do not claim to have created this software nor
+ do I intend to distribute the modified package. The likelyhood of this
+ modified version being compatable with anything other than the "901" is zero.
+ The sole purpose of the modification is to allow the MCDU-901's key matrix to
+ work with the software. Tim.P 10/4/21
+ ======================================================================================
+
+BUILDING FROM SOURCE
+- I suggest just using the prebuilt packages (see below).
+- If you really want to build from source, hunt down the dependencies, then do a "make" followed by "sudo make install"
+
+•	Flash Raspbian Lite
+•	Connect it to wifi
+•	sudo apt-get update ; sudo apt-get --yes upgrade
+•	sudo apt-get install wiringpi (because wiringpi wont be found)
+•	sudo apt-get install ttf-mscorefonts-installer (because font LiberationSans.ttf wont be found)
+•	sudo apt install git (this was so you can “git clone”)
+•	wget -O- http://repo.shahada.abubakar.net/pubkey.asc | sudo apt-key add –
+•	cd /etc/apt/sources.list.d
+•	sudo wget http://repo.shahada.abubakar.net/repo.shahada.abubakar.net.sources.list
+•	sudo apt-get update
+•	sudo apt-get install libsdl2-rpifb libsdl2-rpifb-dev libsdl2-rpifb-ttf libsdl2-rpifb-ttf-dev
+•	sudo apt-get install libxplane-extplane-client0 libxplane-extplane-client0-bin libxplane-extplane-client0-dev
+•	git clone https://github.com/yourrepository/yourFMS (Download your version from github)
+•	cd yourFMS
+•	make
+•	sudo make install
+
+ 
+
+PREBUILT PACKAGE QUICK INSTALLATION
+
+Prebuilt .deb binaries are available for raspbian "Stretch". 
+See http://blog.shahada.abubakar.net/post/installing-pixplanefmccdu-software for more details.
+
+- Install the repository public key:
+  wget -O- http://repo.shahada.abubakar.net/pubkey.asc | sudo apt-key add -
+  
+- Add the APT source:
+  cd /etc/apt/sources.list.d
+  sudo wget http://repo.shahada.abubakar.net/repo.shahada.abubakar.net.sources.list
+  
+- Install the binaries:
+  sudo apt-get update
+  sudo apt-get install pi-xplane-fmc-cdu
+  
+The software can be updated to the latest version at any time by executing:
+  sudo apt-get update; sudo apt-get upgrade
+
+
+TESTING
+
+- Two test programs are currently available:
+
+  testFMCLED
+  - This is a command line test program to test the functionality of the LEDs. 
+
+  testFMCkeypad
+  - This is a command line test program to test the functionality of the keypad.
+
+
+USAGE
+
+  - The main application is started by executing "piXPlaneFMCCDU".
+	
+  - Read the Installation Guide to have the software start automatically when the Pi is powered on.

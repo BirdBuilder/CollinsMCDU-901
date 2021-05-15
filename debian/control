@@ -1,0 +1,25 @@
+Source: ${PACKAGE}
+Maintainer: shahada abubakar <shahada@abubakar.net>
+Section: misc
+Priority: optional
+Standards-Version : 3.9.2
+Homepage: https://github.com/dotsha747/Pi-XPlane-FMC-CDU
+Build-Depends: 	debhelper (>= 9),
+				wiringpi,
+				libxplane-udp-client1-dev,
+				libsdl2-rpifb-dev,
+				libsdl2-rpifb-ttf-dev
+
+Package: ${PACKAGE}
+Architecture: ${ARCH}
+Depends:	${shlibs:Depends}, 
+		 	${misc:Depends},
+		 	wiringpi,
+		 	libxplane-udp-client1,
+		 	libxplane-udp-client1-bin,
+		 	libsdl2-rpifb,
+			libsdl2-rpifb-ttf,
+			fonts-liberation2,
+			libxplane-extplane-client0
+Description: Raspberry Pi-based External FMC for XPlane
+ Raspberry Pi-based External FMC for XPlane
