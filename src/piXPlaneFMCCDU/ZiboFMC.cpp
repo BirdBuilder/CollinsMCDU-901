@@ -207,7 +207,6 @@ void ZiboFMC::subscribeDataRefs() {
 		subscribe("laminar/B738/indicators/fmc_message");
 		subscribe("laminar/B738/indicators/fmc_exec_lights");
 	} else {
-		subscribe("laminar/B738/indicators/fmc_message");
 		subscribe("laminar/B738/indicators/fmc_exec_lights_fo");
 	}
 
@@ -269,7 +268,6 @@ void ZiboFMC::deInit () {
 		unsubscribe("laminar/B738/indicators/fmc_message");
 		unsubscribe("laminar/B738/indicators/fmc_exec_lights");
 	} else {
-		unsubscribe("laminar/B738/indicators/fmc_message");
 		unsubscribe("laminar/B738/indicators/fmc_exec_lights_fo");
 	}
 
@@ -379,11 +377,11 @@ void ZiboFMC::receiveDataRef(std::string type, std::string dataref,
 	}
 
 	else if (dataref == "laminar/B738/indicators/fmc_exec_lights" || dataref == "laminar/B738/indicators/fmc_exec_lights_fo") {
-		LEDs::getInstance()->setLED(LEDs::LED_EXEC, value != "0");
+		LEDs::getInstance()->setLED(LEDs::LED_EXEC, value == "1");
 	}
 
 	else if (dataref == "laminar/B738/indicators/fmc_message") {
-		LEDs::getInstance()->setLED(LEDs::LED_MSG, value != "0");
+		LEDs::getInstance()->setLED(LEDs::LED_MSG, value == "1");
 	}
 
 }
