@@ -113,7 +113,7 @@ void FMCManager::tick() {
 
 	// we're only ever in splashFMC on startup, so this should
 	// happen only once.
-	if (currentFMC == splashFMC && nowTime > timeStarted +4) {
+	if (currentFMC == splashFMC && nowTime > timeStarted +10) {
 		gotoMainFMC();
 		// initialize X-Plane Beacon Listener
 		XPlaneBeaconListener::getInstance()->registerNotificationCallback(
