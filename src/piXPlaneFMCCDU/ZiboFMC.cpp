@@ -377,11 +377,11 @@ void ZiboFMC::receiveDataRef(std::string type, std::string dataref,
 	}
 
 	else if (dataref == "laminar/B738/indicators/fmc_exec_lights" || dataref == "laminar/B738/indicators/fmc_exec_lights_fo") {
-		LEDs::getInstance()->setLED(LEDs::LED_EXEC, value == "1");
+		LEDs::getInstance()->setLED(LEDs::LED_EXEC, value != "0");
 	}
 
-	else if (dataref == "laminar/B738/indicators/fmc_message") {
-		LEDs::getInstance()->setLED(LEDs::LED_MSG, value == "1");
+	else if (dataref == "laminar/B738/fmc/fmc_message") {
+		LEDs::getInstance()->setLED(LEDs::LED_MSG, value != "0");
 	}
 
 }
